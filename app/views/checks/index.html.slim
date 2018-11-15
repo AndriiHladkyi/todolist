@@ -1,0 +1,21 @@
+h1 Listing checks
+
+table
+  thead
+    tr
+      th Description
+      th
+      th
+      th
+
+  tbody
+    - @checks.each do |check|
+      tr
+        td = check.description
+        td = link_to 'Show', check
+        td = link_to 'Edit', edit_check_path(check)
+        td = link_to 'Destroy', check, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Check', new_check_path
