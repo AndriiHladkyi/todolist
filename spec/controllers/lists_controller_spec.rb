@@ -23,10 +23,10 @@ require 'rails_helper'
 # removed from Rails core in Rails 5, but can be added back in via the
 # `rails-controller-testing` gem.
 
-RSpec.describe ChecksController, type: :controller do
+RSpec.describe ListsController, type: :controller do
 
   # This should return the minimal set of attributes required to create a valid
-  # Check. As you add validations to Check, be sure to
+  # List. As you add validations to List, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
     skip("Add a hash of attributes valid for your model")
@@ -38,12 +38,12 @@ RSpec.describe ChecksController, type: :controller do
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
-  # ChecksController. Be sure to keep this updated too.
+  # ListsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
   describe "GET #index" do
     it "returns a success response" do
-      Check.create! valid_attributes
+      List.create! valid_attributes
       get :index, params: {}, session: valid_session
       expect(response).to be_successful
     end
@@ -51,8 +51,8 @@ RSpec.describe ChecksController, type: :controller do
 
   describe "GET #show" do
     it "returns a success response" do
-      check = Check.create! valid_attributes
-      get :show, params: {id: check.to_param}, session: valid_session
+      list = List.create! valid_attributes
+      get :show, params: {id: list.to_param}, session: valid_session
       expect(response).to be_successful
     end
   end
@@ -66,29 +66,29 @@ RSpec.describe ChecksController, type: :controller do
 
   describe "GET #edit" do
     it "returns a success response" do
-      check = Check.create! valid_attributes
-      get :edit, params: {id: check.to_param}, session: valid_session
+      list = List.create! valid_attributes
+      get :edit, params: {id: list.to_param}, session: valid_session
       expect(response).to be_successful
     end
   end
 
   describe "POST #create" do
     context "with valid params" do
-      it "creates a new Check" do
+      it "creates a new List" do
         expect {
-          post :create, params: {check: valid_attributes}, session: valid_session
-        }.to change(Check, :count).by(1)
+          post :create, params: {list: valid_attributes}, session: valid_session
+        }.to change(List, :count).by(1)
       end
 
-      it "redirects to the created check" do
-        post :create, params: {check: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(Check.last)
+      it "redirects to the created list" do
+        post :create, params: {list: valid_attributes}, session: valid_session
+        expect(response).to redirect_to(List.last)
       end
     end
 
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'new' template)" do
-        post :create, params: {check: invalid_attributes}, session: valid_session
+        post :create, params: {list: invalid_attributes}, session: valid_session
         expect(response).to be_successful
       end
     end
@@ -100,41 +100,41 @@ RSpec.describe ChecksController, type: :controller do
         skip("Add a hash of attributes valid for your model")
       }
 
-      it "updates the requested check" do
-        check = Check.create! valid_attributes
-        put :update, params: {id: check.to_param, check: new_attributes}, session: valid_session
-        check.reload
+      it "updates the requested list" do
+        list = List.create! valid_attributes
+        put :update, params: {id: list.to_param, list: new_attributes}, session: valid_session
+        list.reload
         skip("Add assertions for updated state")
       end
 
-      it "redirects to the check" do
-        check = Check.create! valid_attributes
-        put :update, params: {id: check.to_param, check: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(check)
+      it "redirects to the list" do
+        list = List.create! valid_attributes
+        put :update, params: {id: list.to_param, list: valid_attributes}, session: valid_session
+        expect(response).to redirect_to(list)
       end
     end
 
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'edit' template)" do
-        check = Check.create! valid_attributes
-        put :update, params: {id: check.to_param, check: invalid_attributes}, session: valid_session
+        list = List.create! valid_attributes
+        put :update, params: {id: list.to_param, list: invalid_attributes}, session: valid_session
         expect(response).to be_successful
       end
     end
   end
 
   describe "DELETE #destroy" do
-    it "destroys the requested check" do
-      check = Check.create! valid_attributes
+    it "destroys the requested list" do
+      list = List.create! valid_attributes
       expect {
-        delete :destroy, params: {id: check.to_param}, session: valid_session
-      }.to change(Check, :count).by(-1)
+        delete :destroy, params: {id: list.to_param}, session: valid_session
+      }.to change(List, :count).by(-1)
     end
 
-    it "redirects to the checks list" do
-      check = Check.create! valid_attributes
-      delete :destroy, params: {id: check.to_param}, session: valid_session
-      expect(response).to redirect_to(checks_url)
+    it "redirects to the lists list" do
+      list = List.create! valid_attributes
+      delete :destroy, params: {id: list.to_param}, session: valid_session
+      expect(response).to redirect_to(lists_url)
     end
   end
 
