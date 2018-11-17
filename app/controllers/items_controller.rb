@@ -23,7 +23,7 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params[:item].permit(:content)
+    params[:item].permit(:text)
   end
 
 end
