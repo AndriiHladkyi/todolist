@@ -1,4 +1,4 @@
-h1 Список
+h1 Списки
 
 table
   thead
@@ -11,10 +11,10 @@ table
     - @checks.each do |check|
       tr
         td = check.description
-        td = link_to 'Show', check
-        td = link_to 'Edit', edit_check_path(check)
-        td = link_to 'Destroy', check, data: { confirm: 'Are you sure?' }, method: :delete
+        td = link_to 'Показати', check
+        td = link_to 'Редагувати', edit_check_path(check)
+        td = link_to 'Видалити', check, data: { confirm: 'Ти впевнений?' }, method: :delete
 
 br
 
-= link_to 'New Check', new_check_path
+= link_to 'Створити новий список', new_check_path
