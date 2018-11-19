@@ -11,7 +11,8 @@ table
   tbody
     - @lists.each do |list|
       tr
-        th scope="col" = list.title
+        th
+          h2 scope="col" = list.title
         th scope="col"
           = link_to 'Show', list, class:"btn btn-outline-primary"
         th scope="col" = link_to 'Edit', edit_list_path(list), class:"btn btn-outline-primary"
