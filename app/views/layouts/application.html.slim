@@ -8,4 +8,19 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    = yield
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light
+      .container
+        a
+          = link_to 'TodoList Hladkyi', lists_path, class:"navbar-brand"
+        #navbarSupportedContent.collapse.navbar-collapse
+          ul.navbar-nav.mr-auto
+            li.nav-item
+              a
+                = link_to 'Create new', new_list_path(@list), class:"nav-link"
+                span.sr-only (current)
+            li.nav-item
+              a
+                = link_to 'Show all', lists_path, class:"nav-link"
+
+    .container
+      = yield
