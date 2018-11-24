@@ -1,2 +1,16 @@
-h4 = item.text
-p= link_to "Delete", list_item_path(@list, item.id), data: { confirm: 'Are you sure?' }, method: :delete
+- if item.done?
+  .done
+    = link_to done_list_item_path(@list, item.id), method: :patch do
+      i.fa.fa-check style=("opacity: 0.4;")
+  .item
+    p style=("opacity: 0.4;")
+      strike= item.text
+  .delete
+    = link_to "Delete", list_item_path(@list, item.id), method: :delete, data: { confirm: "Are you sure?" }
+- else
+  .done
+    = link_to "Done", done_list_item_path(@list, item.id), method: :patch
+  .item
+    p= item.text
+  .delete
+    = link_to "Delete", list_item_path(@list, item.id), method: :delete, data: { confirm: "Are you sure?" }
