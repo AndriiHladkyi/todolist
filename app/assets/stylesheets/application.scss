@@ -1,1 +1,9 @@
 @import "bootstrap";
+.container {
+	width: 50%;
+	max-width: 750px;
+	margin: auto auto 0 auto;
+	border-radius: 9px;
+	box-shadow: 0 0 2px 2px rgba(0,0.1,0.1,0.1);
+	padding: 1em 0;
+}

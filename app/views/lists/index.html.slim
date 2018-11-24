@@ -1,23 +1,22 @@
-h1 Todo lists
+h1 align='center' your lists
 
-table
-  thead
+table.table
+  thead.thead-dark
     tr
-      th List name
-      th
-      th
-      th
+      th scope="col" List name
+      th scope="col"
+      th scope="col"
+      th scope="col"
 
   tbody
     - @lists.each do |list|
       tr
-        th
+        th scope="row"
           h2 scope="col" = list.title
-        th scope="col"
+        th scope="row"
           = link_to 'Show', list, class:"btn btn-outline-primary"
-        th scope="col" = link_to 'Edit', edit_list_path(list), class:"btn btn-outline-primary"
-        th scope="col" = link_to 'Destroy', list, data: { confirm: 'Are you sure?' }, method: :delete, class:"btn btn-outline-primary"
+        th scope="row" = link_to 'Edit', edit_list_path(list), class:"btn btn-outline-primary"
+        th scope="row" = link_to 'Destroy', list, data: { confirm: 'Are you sure?' }, method: :delete, class:"btn btn-outline-primary"
 
 br
-
 = link_to 'Create new list', new_list_path(@list), class:"btn btn-outline-primary"

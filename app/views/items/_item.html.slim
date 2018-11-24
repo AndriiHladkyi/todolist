@@ -1,16 +1,24 @@
-- if item.done?
-  .done
-    = link_to done_list_item_path(@list, item.id), method: :patch do
-      i.fa.fa-check style=("opacity: 0.4;")
-  .item
-    p style=("opacity: 0.4;")
-      strike= item.text
-  .delete
-    = link_to "Delete", list_item_path(@list, item.id), method: :delete, data: { confirm: "Are you sure?" }
-- else
-  .done
-    = link_to "Done", done_list_item_path(@list, item.id), method: :patch
-  .item
-    p= item.text
-  .delete
-    = link_to "Delete", list_item_path(@list, item.id), method: :delete, data: { confirm: "Are you sure?" }
+table.table
+  - if item.done?
+    tbody
+      tr
+        th.done
+          = link_to done_list_item_path(@list, item.id), method: :patch do
+            i.fa.fa-check
+        th.item
+          p style=("opacity: 0.4;")
+            strike= item.text
+        th.delete
+          = link_to list_item_path(@list, item.id), method: :delete, data: { confirm: "Are you sure?" } do
+            i.fa.fa-trash
+  - else
+    tbody
+      tr
+        th.done
+          = link_to done_list_item_path(@list, item.id), method: :patch do
+            i.fa.fa-circle-thin
+        th.item
+          p= item.text
+        th.delete
+          = link_to list_item_path(@list, item.id), method: :delete, data: { confirm: "Are you sure?" } do
+            i.fa.fa-trash

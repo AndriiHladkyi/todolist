@@ -22,6 +22,11 @@ class ItemsController < ApplicationController
     redirect_to @list, notice: "Item done"
   end
 
+  def undone
+    @item.update_attribute(:undone_at, Time.now)
+    redirect_to @list, notice: "Item undone"
+  end
+
  private
 
   def set_list

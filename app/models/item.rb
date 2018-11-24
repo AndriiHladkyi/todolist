@@ -4,4 +4,8 @@ class Item < ApplicationRecord
   def done?
     !done_at.blank?
   end
+
+  def undone?
+    !undone_at.blank?
+  end
 end
